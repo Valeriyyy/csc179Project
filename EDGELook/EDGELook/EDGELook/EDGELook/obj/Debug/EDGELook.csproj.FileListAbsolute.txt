@@ -1,0 +1,14 @@
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\obj\Debug\EDGELook.csprojAssemblyReference.cache
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\obj\Debug\EDGELook.MainForm.resources
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\obj\Debug\EDGELook.Properties.Resources.resources
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\obj\Debug\EDGELook.csproj.GenerateResource.cache
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\obj\Debug\EDGELook.csproj.CoreCompileInputs.cache
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\bin\Debug\EDGELook.exe.config
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\bin\Debug\EDGELook.exe
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\bin\Debug\EDGELook.pdb
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\bin\Debug\MySql.Data.dll
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\bin\Debug\Google.Protobuf.dll
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\bin\Debug\MySql.Data.xml
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\obj\Debug\EDGELook.csproj.CopyComplete
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\obj\Debug\EDGELook.exe
+C:\Users\valer\OneDrive\Documents\GitHub\SeniorProject\EDGELook\EDGELook\EDGELook\EDGELook\obj\Debug\EDGELook.pdb
