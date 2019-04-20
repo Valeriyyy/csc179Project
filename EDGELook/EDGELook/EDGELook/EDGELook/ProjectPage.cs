@@ -80,7 +80,11 @@ namespace EDGELook
 
                         String addProject = ("INSERT INTO Project (prjNo, prjLeader, description, prjPhase, dueDate, deliverables, hoursNeeded, prjStatus)" +
                                                      "VALUES ('" + projectNum + "', " + "'" + eID + "', '" + projectDesc + "', '" + projectPhase + "', '" + projectDueDates + "', '" + projectDeliverables + "', '" + projectHours + "', '" + projectStatus + "');");
-                        MySqlCommand cmd = new MySqlCommand(addProject, conn);
+                        try {MySqlCommand cmd = new MySqlCommand(addProject, conn);}
+						catch (Exception ex)
+						{
+							Console.WriteLine(ex.Message);
+						}
                         cmd.ExecuteNonQuery();                       
                         return "Project Added";
                     }

@@ -45,12 +45,12 @@ namespace EDGELook
             conn.Open();
 
             string dupId = null;
-            try {String getVacDup = "SELECT  employeeID FROM Vacation WHERE employeeID = '" + this.eID + "' AND startDate = '" + startDate + "';";}
+            String getVacDup = "SELECT  employeeID FROM Vacation WHERE employeeID = '" + eID + "' AND startDate = '" + startDate + "';";			
+            try {MySqlCommand cmd1 = new MySqlCommand(getVacDup, conn);}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex.Message);
 			}
-            MySqlCommand cmd1 = new MySqlCommand(getVacDup, this.conn);
             MySqlDataReader reader = cmd1.ExecuteReader();
             while (reader.Read())
             {
@@ -64,7 +64,11 @@ namespace EDGELook
             }
             else
             {
-                MySqlCommand cmd = new MySqlCommand("INSERT into Vacation VALUES(" + eID + ", '" + startDate + "','" + endDate + "');", conn);
+                try {MySqlCommand cmd = new MySqlCommand("INSERT into Vacation VALUES(" + eID + ", '" + startDate + "','" + endDate + "');", conn);}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.Message);
+				}
                 Console.WriteLine(cmd.ExecuteNonQuery());  
 				conn.Close();	
                 return "Vacation Days Created";

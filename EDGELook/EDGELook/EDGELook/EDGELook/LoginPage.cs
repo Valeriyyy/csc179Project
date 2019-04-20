@@ -33,7 +33,7 @@ namespace EDGELook
             }
             if (eID == null)
             {
-                MessageBox.Show("Not valid login");
+                Console.WriteLine("Not valid login");
             }
             else
                 Console.WriteLine("Logged in");
