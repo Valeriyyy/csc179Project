@@ -15,22 +15,17 @@ namespace EDGELook
         private MySqlConnection conn;
         private int? eID;
 
-        public int? Login (TextBox emailBox, TextBox passwordBox)
+        public int? Login (string email, string password)
         {
-            email = emailBox.Text;
-            password = passwordBox.Text;
-
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception ex)
+                    
+            conn.Open();
+           
+            string getLogin = "SELECT employeeID FROM Employee WHERE email = '" + email + "' AND pssword = '" + password + "';";
+            try {MySqlCommand cmd = new MySqlCommand(getLogin, this.conn);}
+			catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-
-            string getLogin = "SELECT employeeID FROM Employee WHERE email = '" + email + "' AND pssword = '" + password + "';";
-            MySqlCommand cmd = new MySqlCommand(getLogin, this.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
