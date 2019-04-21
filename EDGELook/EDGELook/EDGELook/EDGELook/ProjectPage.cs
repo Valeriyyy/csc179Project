@@ -46,12 +46,14 @@ namespace EDGELook
                                                                            "', hoursNeeded = " + projectHours +
                                                                            ", prjStatus = '" + projectStatus +
                                                                            "' WHERE prjNo = '" + projectNum + "';");                    
-                    try {MySqlCommand cmd = new MySqlCommand(upDateProject, conn);}
+                    try {
+						MySqlCommand cmd = new MySqlCommand(upDateProject, conn);
+						cmd.ExecuteNonQuery();
+						}
 					catch (Exception ex)
 					{
 						Console.WriteLine(ex.Message);
-					}
-                    cmd.ExecuteNonQuery();
+					}                    
                     return "Project Changed";
                 }
                 else if (flag == 0)
@@ -60,12 +62,14 @@ namespace EDGELook
                     //Checks for a duplicate project
                     string prj = null;
                     String getPrjDup = "SELECT  prjNo FROM Project WHERE prjNo = '" + projectNum + "';";
-                    try {MySqlCommand cmd1 = new MySqlCommand(getPrjDup, conn);}
+                    try {
+						MySqlCommand cmd1 = new MySqlCommand(getPrjDup, conn);
+						MySqlDataReader reader = cmd1.ExecuteReader();
+						}
 					catch (Exception ex)
 					{
 						Console.WriteLine(ex.Message);
-					}
-                    MySqlDataReader reader = cmd1.ExecuteReader();
+					}                   
                     while (reader.Read())
                     {
                         prj = reader.GetString("prjNo");
@@ -80,12 +84,14 @@ namespace EDGELook
 
                         String addProject = ("INSERT INTO Project (prjNo, prjLeader, description, prjPhase, dueDate, deliverables, hoursNeeded, prjStatus)" +
                                                      "VALUES ('" + projectNum + "', " + "'" + eID + "', '" + projectDesc + "', '" + projectPhase + "', '" + projectDueDates + "', '" + projectDeliverables + "', '" + projectHours + "', '" + projectStatus + "');");
-                        try {MySqlCommand cmd = new MySqlCommand(addProject, conn);}
+                        try {
+							MySqlCommand cmd = new MySqlCommand(addProject, conn);
+							cmd.ExecuteNonQuery(); 
+							}
 						catch (Exception ex)
 						{
 							Console.WriteLine(ex.Message);
-						}
-                        cmd.ExecuteNonQuery();                       
+						}                                              
                         return "Project Added";
                     }
                 }

@@ -21,12 +21,14 @@ namespace EDGELook
             conn.Open();
            
             string getLogin = "SELECT employeeID FROM Employee WHERE email = '" + email + "' AND pssword = '" + password + "';";
-            try {MySqlCommand cmd = new MySqlCommand(getLogin, this.conn);}
+            try {
+				MySqlCommand cmd = new MySqlCommand(getLogin, this.conn);
+				MySqlDataReader reader = cmd.ExecuteReader();
+				}
 			catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }
-            MySqlDataReader reader = cmd.ExecuteReader();
+            }           
             while (reader.Read())
             {
                 eID = reader.GetInt16("employeeID");

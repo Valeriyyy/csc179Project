@@ -26,12 +26,14 @@ namespace EDGELook
             if (empHours >= 0)
             {
                 conn.Open();
-                try{MySqlCommand cmd = new MySqlCommand("UPDATE Employee SET hoursAvail = '" + empHours + "'WHERE employeeID = '" + this.eID + "';", conn);}
+                try{
+					MySqlCommand cmd = new MySqlCommand("UPDATE Employee SET hoursAvail = '" + empHours + "'WHERE employeeID = '" + this.eID + "';", conn);
+					Console.WriteLine(cmd.ExecuteNonQuery());
+					}
 				catch (Exception ex)
 				{
                 Console.WriteLine(ex.Message);
-				}
-                Console.WriteLine(cmd.ExecuteNonQuery());
+				}                
                 conn.Close();
                 return "Hours Updated";
             }
@@ -46,12 +48,14 @@ namespace EDGELook
 
             string dupId = null;
             String getVacDup = "SELECT  employeeID FROM Vacation WHERE employeeID = '" + eID + "' AND startDate = '" + startDate + "';";			
-            try {MySqlCommand cmd1 = new MySqlCommand(getVacDup, conn);}
+            try {
+				MySqlCommand cmd1 = new MySqlCommand(getVacDup, conn);
+				MySqlDataReader reader = cmd1.ExecuteReader();
+				}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex.Message);
-			}
-            MySqlDataReader reader = cmd1.ExecuteReader();
+			}           
             while (reader.Read())
             {
                 dupId = reader.GetString("employeeID");
@@ -64,12 +68,14 @@ namespace EDGELook
             }
             else
             {
-                try {MySqlCommand cmd = new MySqlCommand("INSERT into Vacation VALUES(" + eID + ", '" + startDate + "','" + endDate + "');", conn);}
+                try {
+					MySqlCommand cmd = new MySqlCommand("INSERT into Vacation VALUES(" + eID + ", '" + startDate + "','" + endDate + "');", conn);
+					Console.WriteLine(cmd.ExecuteNonQuery());
+					}
 				catch (Exception ex)
 				{
 					Console.WriteLine(ex.Message);
-				}
-                Console.WriteLine(cmd.ExecuteNonQuery());  
+				}                  
 				conn.Close();	
                 return "Vacation Days Created";
             }           
@@ -142,12 +148,14 @@ namespace EDGELook
             Boolean isAdmin = false;
             int result = 0;
             conn.Open();
-            try {MySqlCommand cmd = new MySqlCommand("SELECT admin FROM Employee WHERE employeeID = '" + eID + "';", conn);}
+            try {
+				MySqlCommand cmd = new MySqlCommand("SELECT admin FROM Employee WHERE employeeID = '" + eID + "';", conn);
+				MySqlDataReader reader = cmd.ExecuteReader();
+				}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex.Message);
-			}
-            MySqlDataReader reader = cmd.ExecuteReader();
+			}           
             while (reader.Read())
             {
                 result = reader.GetInt16("admin");
