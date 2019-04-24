@@ -17,18 +17,15 @@ namespace EDGELook
 
         public int? Login (string email, string password)
         {
-                    
+            if(conn == null)
+            {
+                return -1;
+            }        
             conn.Open();
            
             string getLogin = "SELECT employeeID FROM Employee WHERE email = '" + email + "' AND pssword = '" + password + "';";
-            try {
-				MySqlCommand cmd = new MySqlCommand(getLogin, this.conn);
-				MySqlDataReader reader = cmd.ExecuteReader();
-				}
-			catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }           
+			MySqlCommand cmd = new MySqlCommand(getLogin, this.conn);
+			MySqlDataReader reader = cmd.ExecuteReader();		         
             while (reader.Read())
             {
                 eID = reader.GetInt16("employeeID");
@@ -47,20 +44,24 @@ namespace EDGELook
             conn = newConn;
         }
         //This only works after the user logs in and has a connection set up
-        public void ChangePassword(TextBox newPasswordBox)
-        {
-            string newPassword = newPasswordBox.Text;
+        public string ChangePassword(string newPassword)
+        {          
             if (newPassword.Length < 6)
             {
-                MessageBox.Show("Password must be at least 6 characters");
+                return "Password must be at least 6 characters";
             }
             else
             {
+				if(conn == null)
+            {
+                return "Not valid Connection";
+            }
                 conn.Open();
                 string setPassword = "UPDATE EMPLOYEE SET pssword = '" + newPassword + "' WHERE employeeID = " + eID + ";";
                 MySqlCommand cmd = new MySqlCommand(setPassword, conn);
                 Console.WriteLine(cmd.ExecuteNonQuery());
                 conn.Close();
+				return "Password updated";
             }
         }
     }

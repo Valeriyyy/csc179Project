@@ -15,25 +15,18 @@ namespace EDGELook
         private MySqlConnection conn;
         private int? eID;
 
-        public void EditMyHours(string hours, int? eID)
+        public string EditMyHours(int emphours, int? eID)
         {
-            empHours = -1;
-            try { empHours = int.Parse(hours); }
-            catch (Exception ex)
+            if (conn == null)
             {
-                Console.WriteLine(ex.Message);
-            }
+                return "Not valid connection";
+            }           
             if (empHours >= 0)
             {
                 conn.Open();
-                try{
-					MySqlCommand cmd = new MySqlCommand("UPDATE Employee SET hoursAvail = '" + empHours + "'WHERE employeeID = '" + this.eID + "';", conn);
-					Console.WriteLine(cmd.ExecuteNonQuery());
-					}
-				catch (Exception ex)
-				{
-                Console.WriteLine(ex.Message);
-				}                
+               
+				MySqlCommand cmd = new MySqlCommand("UPDATE Employee SET hoursAvail = '" + empHours + "'WHERE employeeID = '" + this.eID + "';", conn);
+				Console.WriteLine(cmd.ExecuteNonQuery());						              
                 conn.Close();
                 return "Hours Updated";
             }
@@ -42,20 +35,20 @@ namespace EDGELook
                 return "Invalid Input";
             }
         }
-        public void EditVacation(string startDate, string endDate, int? eID)
-        {        
+        public string EditVacation(string startDate, string endDate, int? eID)
+        {
+            if (conn == null)
+            {
+                return "Not valid connection";
+            }
             conn.Open();
 
             string dupId = null;
             String getVacDup = "SELECT  employeeID FROM Vacation WHERE employeeID = '" + eID + "' AND startDate = '" + startDate + "';";			
-            try {
-				MySqlCommand cmd1 = new MySqlCommand(getVacDup, conn);
-				MySqlDataReader reader = cmd1.ExecuteReader();
-				}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
-			}           
+            
+			MySqlCommand cmd1 = new MySqlCommand(getVacDup, conn);
+			MySqlDataReader reader = cmd1.ExecuteReader();			
+		         
             while (reader.Read())
             {
                 dupId = reader.GetString("employeeID");
@@ -67,15 +60,9 @@ namespace EDGELook
                 return "Duplicate Vacation";
             }
             else
-            {
-                try {
-					MySqlCommand cmd = new MySqlCommand("INSERT into Vacation VALUES(" + eID + ", '" + startDate + "','" + endDate + "');", conn);
-					Console.WriteLine(cmd.ExecuteNonQuery());
-					}
-				catch (Exception ex)
-				{
-					Console.WriteLine(ex.Message);
-				}                  
+            {               
+				MySqlCommand cmd = new MySqlCommand("INSERT into Vacation VALUES(" + eID + ", '" + startDate + "','" + endDate + "');", conn);
+				Console.WriteLine(cmd.ExecuteNonQuery());							                 
 				conn.Close();	
                 return "Vacation Days Created";
             }           
@@ -147,15 +134,13 @@ namespace EDGELook
         {
             Boolean isAdmin = false;
             int result = 0;
-            conn.Open();
-            try {
-				MySqlCommand cmd = new MySqlCommand("SELECT admin FROM Employee WHERE employeeID = '" + eID + "';", conn);
-				MySqlDataReader reader = cmd.ExecuteReader();
-				}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
-			}           
+            if (conn == null)
+            {
+                return false;
+            }
+            conn.Open();           
+			MySqlCommand cmd = new MySqlCommand("SELECT admin FROM Employee WHERE employeeID = '" + eID + "';", conn);
+			MySqlDataReader reader = cmd.ExecuteReader();		          
             while (reader.Read())
             {
                 result = reader.GetInt16("admin");
