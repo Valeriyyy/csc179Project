@@ -223,7 +223,7 @@ namespace EDGELook
 
             
         }
-        public string AssignEmployee(int hours, String firstName, String lastName)
+        public string AssignEmployee(int hours, String firstName, String lastName, string projectID)
         {
             if (conn == null)
             {
@@ -304,7 +304,7 @@ namespace EDGELook
 
         } //END ASSIGNEMPLOYEE: MM and SZ
 
-        public string RemoveEmployee(String firstName, String lastName)
+        public string RemoveEmployee(String firstName, String lastName, string projectID)
         { 
             //get project leader of current project
 			if (conn == null)

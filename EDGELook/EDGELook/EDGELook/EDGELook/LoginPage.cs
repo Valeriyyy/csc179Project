@@ -44,7 +44,7 @@ namespace EDGELook
             conn = newConn;
         }
         //This only works after the user logs in and has a connection set up
-        public string ChangePassword(string newPassword)
+        public string ChangePassword(string newPassword, int? eID)
         {          
             if (newPassword.Length < 6)
             {
