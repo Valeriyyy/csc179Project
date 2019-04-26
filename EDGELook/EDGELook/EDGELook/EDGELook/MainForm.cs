@@ -53,8 +53,9 @@ namespace EDGELook
             emailBox.Text = "iris@yahoo.com";
             passBox.Text = "******";
             */
-
-            eID = login.Login(emailBox, passBox);
+            string email = emailBox.Text;
+            string pword = passBox.Text;
+            eID = login.Login(email, pword);
             int success;
             if (eID == null)
                 success = 0;
@@ -75,7 +76,7 @@ namespace EDGELook
                 profile.GetPhone(profilePhoneTextBox);
                 profile.ListProjects(profileProjectGrid);
                 edit.Setup(conn);
-                isAdmin = profile.getAdmin();
+                isAdmin = profile.getAdmin(eID);
                 if(isAdmin == true)
                 {
                     admin = new AdminPage();
@@ -204,7 +205,7 @@ namespace EDGELook
             edit.AutoDisplay(projectPagePNumBox, projectPageDescriptionBox, projectPageDueDateBox, projectPagePhaseBox, projectPageDeliverablesBox, projectPageHoursBox, projectPageStatusBox, eID, testPrjNo);
             edit.DisplayNotes(notesGridView);
             edit.DisplayEmployees(projectPageAssignmentGrid, projectPageOnProjectGrid);
-            edit.setFlag(1);
+            //edit.setFlag(1);
             Console.WriteLine("Edit Project. Flag set to 1");
         }
 
@@ -219,7 +220,7 @@ namespace EDGELook
             this.adminBackPanel.Visible = false;
 
             Clear();
-            edit.setFlag(0);
+            //edit.setFlag(0);
             Console.WriteLine("Add Project. Flag set to 0");
         }
 
@@ -232,8 +233,9 @@ namespace EDGELook
             //dbconn = new DBConn();
             //conn = dbconn.Dbsetup();
             //edit.Setup(conn);
-            
-            edit.EditProject(projectPagePNumBox, projectPageDescriptionBox, projectPageDueDateBox, projectPagePhaseBox, projectPageDeliverablesBox, projectPageHoursBox, projectPageStatusBox, eID);
+            int flag = 0;
+            int hours = 0;
+            edit.EditProject(projectPagePNumBox.Text, projectPageDescriptionBox.Text, projectPageDueDateBox.Text, projectPagePhaseBox.Text, projectPageDeliverablesBox.Text, hours, projectPageStatusBox.Text, eID, flag);
         }
 
         private void ProjectPageAddSelfButton_Click(object sender, EventArgs e)
@@ -259,7 +261,8 @@ namespace EDGELook
 
         private void ProfileEditButton1_Click(object sender, EventArgs e)
         {
-            profile.EditMyHours(profileHoursTextBox, eID);
+            int hours = 0;
+            profile.EditMyHours(hours, eID);
             //profile.EditVacation(profileStartDate, profileEndDate);
         }
 
@@ -269,7 +272,8 @@ namespace EDGELook
             //String lastName = "Ivy";
             //hours = int.Parse(projectPageEditEmployeeText.Text);
             Console.WriteLine("First = " + removeFirstName + " Last = " + removeLastName);
-            edit.RemoveEmployee(removeFirstName, removeLastName);
+            string pid = "a13";
+            edit.RemoveEmployee(removeFirstName, removeLastName, pid);
             edit.DisplayEmployees(projectPageAssignmentGrid, projectPageOnProjectGrid);
         } //Remove Employee 
 
@@ -282,8 +286,9 @@ namespace EDGELook
             {
                 Console.WriteLine(ex.Message);
             }
+            string pid = "a14";
             Console.WriteLine("First = " + assignFirstName + " Last = " + assignLastName);
-            edit.AssignEmployee(hours, assignFirstName, assignLastName);
+            edit.AssignEmployee(hours, assignFirstName, assignLastName, pid);
             edit.DisplayEmployees(projectPageAssignmentGrid, projectPageOnProjectGrid);
 
         } //Add Employee
@@ -342,7 +347,7 @@ namespace EDGELook
             edit.AutoDisplay(projectPagePNumBox, projectPageDescriptionBox, projectPageDueDateBox, projectPagePhaseBox, projectPageDeliverablesBox, projectPageHoursBox, projectPageStatusBox, eID, profilePrjNo);
             edit.DisplayNotes(notesGridView);
             edit.DisplayEmployees(projectPageAssignmentGrid, projectPageOnProjectGrid);
-            edit.setFlag(1);
+            //edit.setFlag(1);
             Console.WriteLine("Edit Project. Flag set to 1");
         }
 
@@ -364,7 +369,7 @@ namespace EDGELook
 
         private void AdminLabel_Click(object sender, EventArgs e)
         {
-            isAdmin = profile.getAdmin();
+            isAdmin = profile.getAdmin(eID);
             if (isAdmin == true)
             {
                 this.searchProjectsBG.Visible = false;
