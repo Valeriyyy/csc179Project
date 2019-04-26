@@ -57,7 +57,7 @@ namespace EDGELook
                 return "Not valid Connection";
             }
                 conn.Open();
-                string setPassword = "UPDATE EMPLOYEE SET pssword = '" + newPassword + "' WHERE employeeID = " + eID + ";";
+                string setPassword = "UPDATE Employee SET pssword = '" + newPassword + "' WHERE employeeID = " + eID + ";";
                 MySqlCommand cmd = new MySqlCommand(setPassword, conn);
                 Console.WriteLine(cmd.ExecuteNonQuery());
                 conn.Close();

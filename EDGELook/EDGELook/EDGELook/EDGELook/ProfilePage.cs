@@ -146,11 +146,18 @@ namespace EDGELook
                 result = reader.GetInt16("admin");
             }
             conn.Close();
+            //if(result == 1)
+            //{
+            //    isAdmin = true;              
+            //}
+            //return isAdmin;
             if(result == 1)
             {
-                isAdmin = true;              
+                return true;
+            } else
+            {
+                return false;
             }
-            return isAdmin;
         }
     }
 }
