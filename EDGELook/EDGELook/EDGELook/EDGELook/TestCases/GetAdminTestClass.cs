@@ -13,7 +13,6 @@ namespace EDGELook.TestCases
     class GetAdminTestClass
     {
         private ProfilePage profile = new ProfilePage();
-        private LoginPage login = new LoginPage();
         private MySqlConnection conn;
         private DBConn dbconn;
 
@@ -27,14 +26,18 @@ namespace EDGELook.TestCases
         [TestCase]
         public void GetAdminTest2()
         {
-            login.Setup(conn);
+            dbconn = new DBConn();
+            conn = dbconn.Dbsetup();
+            profile.Setup(conn,425);
             Assert.AreEqual(true, profile.getAdmin(425));
         }
         //Path [1, 2, 4, 5, 6, 5, 7, 8, 10]
         [TestCase]
         public void GetAdminTest3()
         {
-            login.Setup(conn);
+            dbconn = new DBConn();
+            conn = dbconn.Dbsetup();
+            profile.Setup(conn,420);
             Assert.AreEqual(false, profile.getAdmin(420));
         }
     }

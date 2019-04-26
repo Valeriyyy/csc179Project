@@ -53,7 +53,7 @@ namespace EDGELook
             {
                 dupId = reader.GetString("employeeID");
             }
-
+            reader.Close();
             if (dupId != null)
             {
 				conn.Close();

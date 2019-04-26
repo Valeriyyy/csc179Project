@@ -72,6 +72,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCases\ChangePasswordTest.cs" />
+    <Compile Include="TestCases\EditMyHoursTestClass.cs" />
+    <Compile Include="TestCases\EditVacationTest.cs" />
     <Compile Include="TestCases\GetAdminTestClass.cs" />
     <Compile Include="TestCases\TestLogin.cs" />
     <EmbeddedResource Include="MainForm.resx">
