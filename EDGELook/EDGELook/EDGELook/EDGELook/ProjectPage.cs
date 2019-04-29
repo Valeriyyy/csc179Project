@@ -27,7 +27,7 @@ namespace EDGELook
         }
 
         //Edit Project
-        public string EditProject(string  projectNum, string  projectDesc, string  projectDueDates, string  projectPhase, string  projectDeliverables, int projectHours, string  projectStatus, int? eID, int flag)
+        public string EditProject(string projectNum, string  projectDesc, string  projectDueDates, string  projectPhase, string  projectDeliverables, int projectHours, string  projectStatus, int? eID, int flag)
         {           
             if (projectNum == "")
             {

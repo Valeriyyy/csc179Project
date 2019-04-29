@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace EDGELook.TestCases
 {
     [TestFixture]
-    class EditVacationTest
+    class EditVacationTestClass
     {
         ProfilePage profile = new ProfilePage();
         private MySqlConnection conn;
@@ -32,6 +32,13 @@ namespace EDGELook.TestCases
             Assert.AreEqual("Duplicate Vacation", profile.EditVacation("0000-00-00", "0000-00-00", 425));
         }
         //Path [1, 3, 4, 5, 4, 6, 8]
+        //TEST CAN BE USED ONLY ONCE, FOR ANOTHER TEST USE, CREATE A NEW DATE OR ENTER DIFFERENT EID
+        //TEST CAN BE USED ONLY ONCE, FOR ANOTHER TEST USE, CREATE A NEW DATE OR ENTER DIFFERENT EID
+        //TEST CAN BE USED ONLY ONCE, FOR ANOTHER TEST USE, CREATE A NEW DATE OR ENTER DIFFERENT EID
+        //TEST CAN BE USED ONLY ONCE, FOR ANOTHER TEST USE, CREATE A NEW DATE OR ENTER DIFFERENT EID
+        //TEST CAN BE USED ONLY ONCE, FOR ANOTHER TEST USE, CREATE A NEW DATE OR ENTER DIFFERENT EID
+        //TEST CAN BE USED ONLY ONCE, FOR ANOTHER TEST USE, CREATE A NEW DATE OR ENTER DIFFERENT EID
+        //TEST CAN BE USED ONLY ONCE, FOR ANOTHER TEST USE, CREATE A NEW DATE OR ENTER DIFFERENT EID
         //TEST CAN BE USED ONLY ONCE, FOR ANOTHER TEST USE, CREATE A NEW DATE OR ENTER DIFFERENT EID
         [TestCase]
         public void EditVacationTest3()

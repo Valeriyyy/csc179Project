@@ -11,7 +11,7 @@ namespace EDGELook
 {
     class ProfilePage
     {
-        private int empHours;
+        //private int empHours;
         private MySqlConnection conn;
         private int? eID;
 
@@ -21,11 +21,11 @@ namespace EDGELook
             {
                 return "Not valid connection";
             }           
-            if (empHours >= 0)
+            if (emphours >= 0)
             {
                 conn.Open();
                
-				MySqlCommand cmd = new MySqlCommand("UPDATE Employee SET hoursAvail = '" + empHours + "'WHERE employeeID = '" + this.eID + "';", conn);
+				MySqlCommand cmd = new MySqlCommand("UPDATE Employee SET hoursAvail = '" + emphours + "'WHERE employeeID = '" + eID + "';", conn);
 				Console.WriteLine(cmd.ExecuteNonQuery());						              
                 conn.Close();
                 return "Hours Updated";

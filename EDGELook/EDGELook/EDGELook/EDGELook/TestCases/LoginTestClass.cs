@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace EDGELook.TestCases
 {
     [TestFixture]
-    class TestLogin
+    class LoginTestClass
     {
         private LoginPage login = new LoginPage();
         private MySqlConnection conn;
